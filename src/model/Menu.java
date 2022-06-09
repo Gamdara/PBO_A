@@ -10,26 +10,28 @@ package model;
  */
 public class Menu {
     private int id;
-    private int nama;
+    private String nama;
 
-    public Menu(int id, int nama) {
+    public Menu(int id, String nama) {
         this.id = id;
         this.nama = nama;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getNama() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNama() {
         return nama;
     }
 
-    public void setNama(int nama) {
+    public void setNama(String nama) {
         this.nama = nama;
     }
+
+    
 }

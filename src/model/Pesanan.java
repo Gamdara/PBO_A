@@ -16,8 +16,9 @@ public class Pesanan {
     private int total;
     private String tanggal;
     private String no_tiket;
+    private int bagasi;
 
-    public Pesanan(int id, Pesawat pesawat, String nama_pemesan, int jumlah_penumpang, int total, String tanggal, String no_tiket) {
+    public Pesanan(int id, Pesawat pesawat, String nama_pemesan, int jumlah_penumpang, int total, String tanggal, String no_tiket, int bagasi) {
         this.id = id;
         this.pesawat = pesawat;
         this.nama_pemesan = nama_pemesan;
@@ -25,6 +26,7 @@ public class Pesanan {
         this.total = total;
         this.tanggal = tanggal;
         this.no_tiket = no_tiket;
+        this.bagasi = bagasi;
     }
 
     public void setId(int id) {
@@ -82,4 +84,14 @@ public class Pesanan {
     public int getTotal() {
         return total;
     }
+
+    public int getBagasi() {
+        return bagasi;
+    }
+
+    public void setBagasi(int bagasi) {
+        this.bagasi = bagasi;
+    }
+    
+    
 }

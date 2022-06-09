@@ -8,29 +8,40 @@ package model;
  *
  * @author Gde Rama Vedanta Yudhistira / 200710735 / PBO A
  */
-public class Kota {
+public class Bandara {
     private int id;
-    private int nama;
+    private String nama;
+    private String kota;
 
-    public Kota(int id, int nama) {
+    public Bandara(int id, String nama, String kota) {
         this.id = id;
         this.nama = nama;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.kota = kota;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getNama() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getKota() {
+        return kota;
+    }
+
+    public void setKota(String kota) {
+        this.kota = kota;
+    }
+
+    public String getNama() {
         return nama;
     }
 
-    public void setNama(int nama) {
+    public void setNama(String nama) {
         this.nama = nama;
     }
+    
     
 }

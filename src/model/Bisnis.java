@@ -11,7 +11,7 @@ package model;
 public class Bisnis extends Pesawat {
     private Menu menu;
 
-    public Bisnis(int id, Kota asal, Kota tujuan, String maskapai, int kapasitas, String kelas,Menu menu) {
+    public Bisnis(int id, Bandara asal, Bandara tujuan, String maskapai, int kapasitas, String kelas,Menu menu) {
         super(id, asal, tujuan, maskapai, kapasitas, kelas);
         this.menu = menu;
     }

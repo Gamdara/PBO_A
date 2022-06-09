@@ -10,7 +10,7 @@ package model;
  */
 public class Ekonomi extends Pesawat {
 
-    public Ekonomi(int id, Kota asal, Kota tujuan, String maskapai, int kapasitas, String kelas) {
+    public Ekonomi(int id, Bandara asal, Bandara tujuan, String maskapai, int kapasitas, String kelas) {
         super(id, asal, tujuan, maskapai, kapasitas, kelas);
     }
     

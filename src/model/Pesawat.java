@@ -10,13 +10,13 @@ package model;
  */
 public abstract class Pesawat {
     protected int id;
-    protected Kota asal;
-    protected Kota tujuan;
+    protected Bandara asal;
+    protected Bandara tujuan;
     protected String maskapai;
     protected int kapasitas;
     protected String kelas;
 
-    public Pesawat(int id, Kota asal, Kota tujuan, String maskapai, int kapasitas, String kelas) {
+    public Pesawat(int id, Bandara asal, Bandara tujuan, String maskapai, int kapasitas, String kelas) {
         this.id = id;
         this.asal = asal;
         this.tujuan = tujuan;
@@ -25,11 +25,11 @@ public abstract class Pesawat {
         this.kelas = kelas;
     }
 
-    public void setAsal(Kota asal) {
+    public void setAsal(Bandara asal) {
         this.asal = asal;
     }
 
-    public Kota getAsal() {
+    public Bandara getAsal() {
         return asal;
     }
 
@@ -65,11 +65,11 @@ public abstract class Pesawat {
         return maskapai;
     }
 
-    public void setTujuan(Kota tujuan) {
+    public void setTujuan(Bandara tujuan) {
         this.tujuan = tujuan;
     }
 
-    public Kota getTujuan() {
+    public Bandara getTujuan() {
         return tujuan;
     }
     
