@@ -4,27 +4,54 @@
  */
 package model;
 
+import model.Bandara;
+import model.Menu;
+
 /**
  *
  * @author Gde Rama Vedanta Yudhistira / 200710735 / PBO A
  */
-public abstract class Pesawat {
-    protected int id;
-    protected Bandara asal;
-    protected Bandara tujuan;
-    protected String maskapai;
-    protected int kapasitas;
-    protected String kelas;
+public class Pesawat {
+    private int id;
+    private String nama;
+    private Bandara asal;
+    private Bandara tujuan;
+    private Menu menu;
+    private String maskapai;
+    private int kapasitas;
+    private String kelas;
 
-    public Pesawat(int id, Bandara asal, Bandara tujuan, String maskapai, int kapasitas, String kelas) {
+    public Pesawat(int id,String nama, Bandara asal, Bandara tujuan,Menu menu, String maskapai, int kapasitas, String kelas) {
         this.id = id;
+        this.nama = nama;
         this.asal = asal;
         this.tujuan = tujuan;
+        this.menu = menu;
         this.maskapai = maskapai;
         this.kapasitas = kapasitas;
         this.kelas = kelas;
     }
 
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+    
+    
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+    
+    
+    
     public void setAsal(Bandara asal) {
         this.asal = asal;
     }

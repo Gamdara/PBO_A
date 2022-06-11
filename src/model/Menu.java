@@ -9,19 +9,19 @@ package model;
  * @author Gde Rama Vedanta Yudhistira / 200710735 / PBO A
  */
 public class Menu {
-    private int id;
+    private Integer id;
     private String nama;
 
-    public Menu(int id, String nama) {
+    public Menu(Integer id, String nama) {
         this.id = id;
         this.nama = nama;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package dao;
 
@@ -10,52 +11,50 @@ import java.sql. ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import model.Bandara;
+import model.Menu;
 /**
  *
- * @author Gde Rama Vedanta Yudhistira / 200710735 / PBO A
+ * @author Gde Rama Vedanta Yudhistira \n 200710735
  */
-public class BandaraDAO {
+public class MenuDAO {
     private DbConnection dbCon = DbConnection.getInstance();
     private Connection con;
     
-    public void insertBandara(Bandara d){
+    public void insertMenu(Menu d){
         con = dbCon.makeConnection();
-        String sql = "insert into bandara(nama, kota) "
-                + "values ('"+d.getNama()+"','"+d.getKota()
-                 +"')";
-        System.out.println("Adding bandara..");
+        String sql = "insert into menu(nama) "
+                + "values ('"+d.getNama()+"')";
+        System.out.println("Adding menu..");
         
         try{
             Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Add "+result+" Bandara");
+            System.out.println("Add "+result+" Menu");
             statement.close();
         }
         catch(Exception e){
-            System.out.println("Error adding Bandara..");
+            System.out.println("Error adding Menu..");
             System.out.println(e);
         }
         dbCon.closeConnection();
     }
     
-    public List<Bandara> showBandara(){
+    public List<Menu> showMenu(){
         con = dbCon.makeConnection();
-        String sql = "select * from bandara";
+        String sql = "select * from menu";
         System.out.println("");
-        System.out.println("Mengambil data bandara...");
+        System.out.println("Mengambil data menu...");
         
-        List<Bandara> list = new ArrayList();
+        List<Menu> list = new ArrayList();
         
         try{
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             if(rs != null){
                 while(rs.next()){
-                    Bandara d = new Bandara(
+                    Menu d = new Menu(
                         rs.getInt("id"),
-                        rs.getString("nama"),
-                        rs.getString("kota")
+                        rs.getString("nama")
                     );
                     list.add(d);
                 }
@@ -71,23 +70,22 @@ public class BandaraDAO {
         return list;
     }
     
-    public List<Bandara> showBandara(String key){
+    public List<Menu> showMenu(String key){
         con = dbCon.makeConnection();
-        String sql = "select * from bandara where nama like '%"+key+"%' or kota like '%"+key+"%' or id = '"+key+"'";
+        String sql = "select * from menu where nama like '%"+key+"%' or id = '"+key+"'";
         System.out.println("");
-        System.out.println("Mengambil data bandara...");
+        System.out.println("Mengambil data menu...");
         
-        List<Bandara> list = new ArrayList();
+        List<Menu> list = new ArrayList();
         
         try{
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             if(rs != null){
                 while(rs.next()){
-                    Bandara d = new Bandara(
+                    Menu d = new Menu(
                         rs.getInt("id"),
-                        rs.getString("nama"),
-                        rs.getString("kota")
+                        rs.getString("nama")
                     );
                     list.add(d);
                 }
@@ -103,21 +101,20 @@ public class BandaraDAO {
         return list;
     }
     
-    public Bandara searchBandara (int id){
+    public Menu searchMenu (int id){
         con= dbCon.makeConnection();
             
-        String sql = "SELECT * FROM bandara WHERE id =" + id + "";
-        System.out.println ("searching Bandara. . . ");
-        Bandara d = null;
+        String sql = "SELECT * FROM menu WHERE id =" + id + "";
+        System.out.println ("searching Menu. . . ");
+        Menu d = null;
         try{
             Statement statement = con.createStatement();
             ResultSet rs =  statement.executeQuery (sql);
             if (rs != null){
                 while(rs.next()){
-                    d = new Bandara(
+                    d = new Menu(
                     rs.getInt("id"),
-                    rs.getString("nama"),
-                    rs.getString("kota"));
+                    rs.getString("nama"));
                 }           
             }
             rs.close();
@@ -131,41 +128,40 @@ public class BandaraDAO {
         return d;
     }
     
-    public void updateBandara (Bandara d, int id){
+    public void updateMenu (Menu d, int id){
         con= dbCon.makeConnection();
             
-        String sql = "UPDATE bandara SET nama='"+ d.getNama() + "',"
-        +"kota = '"+ d.getKota()+ "' "
+        String sql = "UPDATE menu SET nama='"+ d.getNama() + "'"
         +"WHERE id = " +id + "";
-        System.out.println ("Editing Bandara. . . ");
+        System.out.println ("Editing Menu. . . ");
         
         try{
             Statement statement = con.createStatement();
             int result =  statement.executeUpdate(sql);
-            System.out.println("Edited "+result+" Bandara");
+            System.out.println("Edited "+result+" Menu");
             statement.close();
         }
         catch (Exception e){
-            System. out. println ("Error editing bandara. .. ");
+            System. out. println ("Error editing menu. .. ");
             System.out.println (e) ;
         }
         dbCon.closeConnection();
     }
     
-    public void deleteBandara (int noInduk){
+    public void deleteMenu (int noInduk){
         con= dbCon.makeConnection();
             
-        String sql = "DELETE FROM bandara WHERE id ="+noInduk + "";
-        System.out.println("Deleting Bandara . . . ");
+        String sql = "DELETE FROM menu WHERE id ="+noInduk + "";
+        System.out.println("Deleting Menu . . . ");
         
         try{
             Statement statement = con.createStatement();
             int result =  statement.executeUpdate(sql);
-            System.out.println("Delete "+result+" Bandara");
+            System.out.println("Delete "+result+" Menu");
             statement.close();
         }
         catch (Exception e){
-            System. out. println ("Error deleting bandara. .. ");
+            System. out. println ("Error deleting menu. .. ");
             System.out.println (e) ;
         }
         dbCon.closeConnection();
