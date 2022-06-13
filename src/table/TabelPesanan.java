@@ -27,26 +27,35 @@ public class TabelPesanan extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 8;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(columnIndex){
             case 0:
-                return list.get(rowIndex).getPesawat().getNama();
-            case 1:
-                return list.get(rowIndex).getNama_pemesan();
-            case 2:
-                return list.get(rowIndex).getJumlah_penumpang();
-            case 3:
-                return list.get(rowIndex).getTotal();
-            case 4:
-                return list.get(rowIndex).getTanggal();
-            case 5:
                 return list.get(rowIndex).getNo_tiket();
+            case 1:
+                return list.get(rowIndex).getPesawat().getNama();
+            case 2:
+                return list.get(rowIndex).getPesawat().getAsal().getNama();
+            case 3:
+                return list.get(rowIndex).getPesawat().getTujuan().getNama();
+            case 4:
+                return list.get(rowIndex).getNama_pemesan();
+            case 5:
+                return list.get(rowIndex).getJumlah_penumpang();
             case 6:
+                return list.get(rowIndex).getTotal();
+            case 7:
+                return list.get(rowIndex).getTanggal();
+            case 8:
                 return list.get(rowIndex).getBagasi();
+            case 9:
+                return list.get(rowIndex).getId();
+            case 10:
+                return list.get(rowIndex).getId();
+            
             default:
                 return null;
         }
@@ -56,17 +65,21 @@ public class TabelPesanan extends AbstractTableModel {
     public String getColumnName(int column) {
         switch(column){
             case 0:
-                return "Pesawat";
-            case 1:
-                return "Pemesan";
-            case 2:
-                return "Penumpang";
-            case 3:
-                return "Total Pesanan";
-            case 4:
-                return "Tanggal";
-            case 5:
                 return "No Tiket";
+            case 1:
+                return "Pesawat";
+            case 2:
+                return "Asal";
+            case 3:
+                return "Tujuan";
+            case 4:
+                return "Pemesan";
+            case 5:
+                return "Penumpang";
+            case 6:
+                return "Total Pesanan";
+            case 7:
+                return "Tanggal";
             default:
                 return null;
         }

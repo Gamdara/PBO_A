@@ -27,7 +27,7 @@ public class TabelPesawat extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 7;
     }
 
     @Override
@@ -46,7 +46,13 @@ public class TabelPesawat extends AbstractTableModel {
             case 5:
                 return list.get(rowIndex).getKelas();
             case 6:
+                return list.get(rowIndex).getHarga();
+            case 7:
                 return list.get(rowIndex).getId();
+            case 8:
+                return list.get(rowIndex).getAsal().getId();
+            case 9:
+                return list.get(rowIndex).getTujuan().getId();
             default:
                 return null;
         }
@@ -67,6 +73,9 @@ public class TabelPesawat extends AbstractTableModel {
                 return "Kapasitas";
             case 5:
                 return "Kelas";
+            case 6:
+                return "Harga";
+            
             default:
                 return null;
         }

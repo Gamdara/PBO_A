@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/model/Pesawat.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/view/TiketView.java</file>
             <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/dao/PesananDAO.java</file>
             <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/dao/PesawatDAO.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/view/DetailPesananView.java</file>
             <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/view/BandaraView.java</file>
             <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/view/PesawatView.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/control/PesawatControl.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/table/TabelPesawat.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/jnck/src/model/Bandara.java</file>
         </group>
     </open-files>
 </project-private>

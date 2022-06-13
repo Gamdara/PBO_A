@@ -44,5 +44,10 @@ public class PesawatControl {
         return dataPesawat;
     }
     
+    public List<Pesawat> showListPesawat(String nasal, String tujuan, String key){
+        List<Pesawat> dataPesawat = dDao.showPesawat(nasal, tujuan,key);
+        return dataPesawat;
+    }
+    
     
 }

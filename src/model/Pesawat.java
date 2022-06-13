@@ -19,8 +19,10 @@ public class Pesawat {
     private String maskapai;
     private int kapasitas;
     private String kelas;
+    private int harga;
+    
 
-    public Pesawat(int id,String nama, Bandara asal, Bandara tujuan, String maskapai, int kapasitas, String kelas) {
+    public Pesawat(int id,String nama, Bandara asal, Bandara tujuan, String maskapai, int kapasitas, String kelas, int harga) {
         this.id = id;
         this.nama = nama;
         this.asal = asal;
@@ -28,8 +30,20 @@ public class Pesawat {
         this.maskapai = maskapai;
         this.kapasitas = kapasitas;
         this.kelas = kelas;
+        this.harga = harga;
+        
     }
 
+    public int getHarga() {
+        return harga;
+    }
+
+    public void setHarga(int harga) {
+        this.harga = harga;
+    }
+
+    
+    
     public String getNama() {
         return nama;
     }

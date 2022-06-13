@@ -38,4 +38,9 @@ public class PesananControl {
         List<Pesanan> dataPesanan = dDao.showPesanan();
         return dataPesanan;
     }
+    
+    public List<Pesanan> showListPesanan(String key){
+        List<Pesanan> dataPesanan = dDao.showPesanan(key);
+        return dataPesanan;
+    }
 }

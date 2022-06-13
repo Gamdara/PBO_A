@@ -33,5 +33,11 @@ public class Menu {
         this.nama = nama;
     }
 
+    @Override
+    public String toString() {
+        return this.nama; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }
