@@ -24,15 +24,12 @@ public class PesawatDAO {
     
     public void insertPesawat(Pesawat d){
         con = dbCon.makeConnection();
-        String menu = "";
-        if(d.getMenu() == null) menu = "null";
-        else menu = d.getMenu().getId().toString();
-        String sql = "insert into pesawat(nama,id_kota_asal,id_kota_tujuan,id_menu, maskapai, kapasitas, kelas) "
+        
+        String sql = "insert into pesawat(nama,id_kota_asal,id_kota_tujuan, maskapai, kapasitas, kelas) "
                 + "values ("
                 + "'"+d.getNama()+"',"
                 + ""+d.getAsal().getId()+","
                 + ""+d.getTujuan().getId()+","
-                + menu+","
                 + "'"+d.getMaskapai()+"',"
                 + ""+d.getKapasitas()+","
                 + "'"+d.getKelas()+"'"
@@ -57,7 +54,6 @@ public class PesawatDAO {
         String sql = "select * from pesawat as p "
                 + "join bandara as asal on p.id_bandara_asal = asal.id "
                 + "join bandara as tujuan on p.id_bandara_tujuan = tujuan.id "
-                + "left join menu as menu on p.id_menu = menu.id "
                 ;
         System.out.println("");
         System.out.println("Mengambil data pesawat... "+sql);
@@ -81,9 +77,61 @@ public class PesawatDAO {
                         rs.getString("tujuan.kota")
                     );
                     
-                    Menu menu = new Menu(
-                        rs.getInt("menu.id"),
-                        rs.getString("menu.nama")
+                    Pesawat d = new Pesawat(
+                        rs.getInt("p.id"),
+                        rs.getString("p.nama"),
+                        asal,
+                        tujuan,
+                        rs.getString("p.maskapai"),
+                        rs.getInt("p.kapasitas"),
+                        rs.getString("p.kelas")
+                    );
+                    list.add(d);
+                }
+            }
+            rs.close();
+            statement.close();
+        }
+        catch(Exception e){
+            System.out.println("Error reading database...");
+            System.out.println(e);
+        }
+        dbCon.closeConnection();
+        return list;
+    }
+    
+    public List<Pesawat> showPesawat(String key){
+        con = dbCon.makeConnection();
+        String sql = "select * from pesawat as p "
+                + "join bandara as asal on p.id_bandara_asal = asal.id "
+                + "join bandara as tujuan on p.id_bandara_tujuan = tujuan.id "
+                + "where p.nama like '%"+key+"%'"
+                + "or asal.nama like '%"+key+"%'"
+                + "or tujuan.nama like '%"+key+"%'"
+                + "or p.maskapai like '%"+key+"%'"
+                + "or p.kapasitas = '"+key+"'"
+                + "or p.kelas like '"+key+"'"
+                ;
+        System.out.println("");
+        System.out.println("Mengambil data pesawat... "+sql);
+        
+        List<Pesawat> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs != null){
+                while(rs.next()){
+                    Bandara asal = new Bandara(
+                        rs.getInt("asal.id"),
+                        rs.getString("asal.nama"),
+                        rs.getString("asal.kota")
+                    );
+                    
+                    Bandara tujuan = new Bandara(
+                        rs.getInt("tujuan.id"),
+                        rs.getString("tujuan.nama"),
+                        rs.getString("tujuan.kota")
                     );
                     
                     Pesawat d = new Pesawat(
@@ -91,7 +139,6 @@ public class PesawatDAO {
                         rs.getString("p.nama"),
                         asal,
                         tujuan,
-                        menu,
                         rs.getString("p.maskapai"),
                         rs.getInt("p.kapasitas"),
                         rs.getString("p.kelas")
@@ -116,7 +163,6 @@ public class PesawatDAO {
         String sql = "select * from pesawat as p "
                 + "join bandara as asal on p.id_bandara_asal = asal.id "
                 + "join bandara as tujuan on p.id_bandara_tujuan = tujuan.id "
-                + "left join menu as menu on p.id_menu = menu.id "
                 + "where p.id = "+id
                 ;
         System.out.println ("searching Pesawat. . . ");
@@ -138,17 +184,11 @@ public class PesawatDAO {
                         rs.getString("tujuan.kota")
                     );
                     
-                    Menu menu = new Menu(
-                        rs.getInt("menu.id"),
-                        rs.getString("menu.nama")
-                    );
-                    
                     d = new Pesawat(
                         rs.getInt("p.id"),
                         rs.getString("p.nama"),
                         asal,
                         tujuan,
-                        menu,
                         rs.getString("p.maskapai"),
                         rs.getInt("p.kapasitas"),
                         rs.getString("p.kelas")
@@ -170,14 +210,10 @@ public class PesawatDAO {
         con= dbCon.makeConnection();
         
         String menu = "";
-        if(d.getMenu() == null) menu = "null";
-        else menu = d.getMenu().getId().toString();
-        
         String sql = "UPDATE pesawat SET "
                 +"nama='"+ d.getNama()+ "',"
                 +"id_bandara_asal="+ d.getAsal().getId()+ ","
                 +"id_bandara_tujuan="+ d.getTujuan().getId()+ ","
-                +"id_menu="+ d.getMenu()+ ","
                 +"maskapai='"+ d.getMaskapai()+ "',"
                 +"kapasitas="+ d.getMaskapai()+ ","
                 +"kelas = '"+ d.getKelas()+ "' "

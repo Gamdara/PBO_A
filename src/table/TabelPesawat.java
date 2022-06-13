@@ -27,7 +27,7 @@ public class TabelPesawat extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 7;
+        return 6;
     }
 
     @Override
@@ -40,17 +40,12 @@ public class TabelPesawat extends AbstractTableModel {
             case 2:
                 return list.get(rowIndex).getTujuan().getNama();
             case 3:
-                if(list.get(rowIndex).getMenu() == null)
-                return "";
-                else
-                return list.get(rowIndex).getMenu().getNama();
-            case 4:
                 return list.get(rowIndex).getMaskapai();
-            case 5:
+            case 4:
                 return list.get(rowIndex).getKapasitas();
-            case 6:
+            case 5:
                 return list.get(rowIndex).getKelas();
-            case 7:
+            case 6:
                 return list.get(rowIndex).getId();
             default:
                 return null;
@@ -67,12 +62,10 @@ public class TabelPesawat extends AbstractTableModel {
             case 2:
                 return "Tujuan Bandara";
             case 3:
-                return "Nama Menu";
-            case 4:
                 return "Maskapai";
-            case 5:
+            case 4:
                 return "Kapasitas";
-            case 6:
+            case 5:
                 return "Kelas";
             default:
                 return null;

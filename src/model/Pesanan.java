@@ -11,6 +11,7 @@ package model;
 public class Pesanan {
     private int id;
     private Pesawat pesawat;
+    private Menu menu;
     private String nama_pemesan;
     private int jumlah_penumpang;
     private int total;
@@ -18,15 +19,24 @@ public class Pesanan {
     private String no_tiket;
     private int bagasi;
 
-    public Pesanan(int id, Pesawat pesawat, String nama_pemesan, int jumlah_penumpang, int total, String tanggal, String no_tiket, int bagasi) {
+    public Pesanan(int id, Pesawat pesawat, Menu menu, String nama_pemesan, int jumlah_penumpang, int total, String tanggal, String no_tiket, int bagasi) {
         this.id = id;
         this.pesawat = pesawat;
+        this.menu = menu;
         this.nama_pemesan = nama_pemesan;
         this.jumlah_penumpang = jumlah_penumpang;
         this.total = total;
         this.tanggal = tanggal;
         this.no_tiket = no_tiket;
         this.bagasi = bagasi;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public Menu getMenu() {
+        return menu;
     }
 
     public void setId(int id) {

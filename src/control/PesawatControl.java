@@ -38,4 +38,11 @@ public class PesawatControl {
         List<Pesawat> dataPesawat = dDao.showPesawat();
         return dataPesawat;
     }
+    
+    public List<Pesawat> showListPesawat(String key){
+        List<Pesawat> dataPesawat = dDao.showPesawat(key);
+        return dataPesawat;
+    }
+    
+    
 }

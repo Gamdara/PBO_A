@@ -26,10 +26,13 @@ public class PesananDAO {
     
     public void insertPesanan(Pesanan d){
         con = dbCon.makeConnection();
-        
-        String sql = "insert into pesanan(id_pesawat,nama_pemesan,jumlah_penumpang,total,tanggal,no_tiket,bagasi) "
+        String menu = "";
+        if(d.getMenu() == null) menu = "null";
+        else menu = d.getMenu().getId().toString();
+        String sql = "insert into pesanan(id_pesawat,id_menu,nama_pemesan,jumlah_penumpang,total,tanggal,no_tiket,bagasi) "
                 + "values ("
                 + ""+d.getPesawat().getId()+","
+                + ""+d.getMenu().getId()+","
                 + "'"+d.getNama_pemesan()+"',"
                 + ""+d.getJumlah_penumpang()+","
                 + ""+d.getTotal()+","
@@ -58,7 +61,7 @@ public class PesananDAO {
                 + "join pesawat as pst on psn.id_pesawat = pst.id"
                 + "join bandara as asal on pst.id_bandara_asal = asal.id "
                 + "join bandara as tujuan on pst.id_bandara_tujuan = tujuan.id "
-                + "left join menu as menu on pst.id_menu = menu.id  "
+                + "left join menu as menu on psn.id_menu = menu.id  "
                 ;
         System.out.println("");
         System.out.println("Mengambil data pesanan... "+sql);
@@ -92,7 +95,6 @@ public class PesananDAO {
                         rs.getString("pst.nama"),
                         asal,
                         tujuan,
-                        menu,
                         rs.getString("pst.maskapai"),
                         rs.getInt("pst.kapasitas"),
                         rs.getString("pst.kelas")
@@ -101,6 +103,7 @@ public class PesananDAO {
                     Pesanan d = new Pesanan(
                         rs.getInt("psn.id"),
                         p,
+                        menu,
                         rs.getString("psn.nama_pemesan"),
                         rs.getInt("psn.jumlah_penumpang"),
                         rs.getInt("psn.total"),
@@ -129,7 +132,7 @@ public class PesananDAO {
                 + "join pesawat as pst on psn.id_pesawat = pst.id"
                 + "join bandara as asal on pst.id_bandara_asal = asal.id "
                 + "join bandara as tujuan on pst.id_bandara_tujuan = tujuan.id "
-                + "left join menu as menu on pst.id_menu = menu.id  "
+                + "left join menu as menu on psn.id_menu = menu.id  "
                 + "where psn.id = "+id
                 ;
         System.out.println ("searching Pesanan. . . ");
@@ -161,7 +164,7 @@ public class PesananDAO {
                         rs.getString("pst.nama"),
                         asal,
                         tujuan,
-                        menu,
+                        
                         rs.getString("pst.maskapai"),
                         rs.getInt("pst.kapasitas"),
                         rs.getString("pst.kelas")
@@ -170,6 +173,7 @@ public class PesananDAO {
                     d = new Pesanan(
                         rs.getInt("psn.id"),
                         p,
+                        menu,
                         rs.getString("psn.nama_pemesan"),
                         rs.getInt("psn.jumlah_penumpang"),
                         rs.getInt("psn.total"),
@@ -197,6 +201,7 @@ public class PesananDAO {
         
         String sql = "UPDATE pesanan SET "
                 +"id_pesawai="+ d.getPesawat().getId()+ ","
+                +"id_menu="+ d.getMenu().getId()+ ","
                 +"nama_pesanan='"+ d.getNama_pemesan()+ "',"
                 +"jumlah_penumpang="+ d.getJumlah_penumpang()+ ","
                 +"total="+ d.getTotal()+ ","

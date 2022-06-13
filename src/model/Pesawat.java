@@ -16,17 +16,15 @@ public class Pesawat {
     private String nama;
     private Bandara asal;
     private Bandara tujuan;
-    private Menu menu;
     private String maskapai;
     private int kapasitas;
     private String kelas;
 
-    public Pesawat(int id,String nama, Bandara asal, Bandara tujuan,Menu menu, String maskapai, int kapasitas, String kelas) {
+    public Pesawat(int id,String nama, Bandara asal, Bandara tujuan, String maskapai, int kapasitas, String kelas) {
         this.id = id;
         this.nama = nama;
         this.asal = asal;
         this.tujuan = tujuan;
-        this.menu = menu;
         this.maskapai = maskapai;
         this.kapasitas = kapasitas;
         this.kelas = kelas;
@@ -38,18 +36,7 @@ public class Pesawat {
 
     public void setNama(String nama) {
         this.nama = nama;
-    }
-    
-    
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
-    public Menu getMenu() {
-        return menu;
-    }
-    
+    }    
     
     
     public void setAsal(Bandara asal) {
